@@ -1,0 +1,9 @@
+# Cloudflare Worker settings for Ed's live search.
+# Replace the ALLOWED_ORIGIN value with your website address (no path).
+name = "edutrack-ed"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://YOUR-USERNAME.github.io"
+ED_MODEL = "claude-haiku-5-5"

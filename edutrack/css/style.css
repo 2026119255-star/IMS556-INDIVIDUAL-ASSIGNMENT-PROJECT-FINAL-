@@ -1,0 +1,709 @@
+/* ==========================================================================
+   style.css - EduTrack
+   Bootstrap 5.3 provides the grid and components and handles light/dark via
+   data-bs-theme. This file defines the brand, navigation and page styles.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --edu-primary: #4f46e5;
+  --edu-primary-dark: #3730a3;
+  --edu-accent: #06b6d4;
+  --edu-nav: #0f172a;
+  --edu-nav-line: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: -0.005em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+}
+
+.btn {
+  border-radius: 0.6rem;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: var(--edu-primary);
+  border-color: var(--edu-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--edu-primary-dark);
+  border-color: var(--edu-primary-dark);
+}
+
+.card {
+  border-radius: 0.9rem;
+  border: 1px solid var(--bs-border-color-translucent);
+}
+
+/* ---------- Top bar ---------- */
+
+.app-topbar {
+  background: var(--edu-nav);
+  border-bottom: 1px solid var(--edu-nav-line);
+  min-height: 64px;
+  z-index: 1030;
+}
+
+.app-topbar .navbar-brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.app-topbar .navbar-brand:hover {
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* Three-line hamburger; animates into an X when the menu is open */
+.hamburger {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.hamburger:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.hamburger:focus-visible {
+  outline: 3px solid var(--edu-accent);
+  outline-offset: 2px;
+}
+
+.btn-theme {
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-theme:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.user-chip {
+  align-items: center;
+  gap: 0.4rem;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ---------- Navigation panel (off-canvas) ---------- */
+
+.site-menu {
+  width: min(340px, 88vw);
+}
+
+.site-menu .offcanvas-header {
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+.site-menu-list {
+  padding: 0.6rem;
+}
+
+/* Nested levels are indented with a guide line */
+.site-menu-list .site-menu-list {
+  margin: 0.15rem 0 0.15rem 0.9rem;
+  padding: 0.15rem 0 0.15rem 0.6rem;
+  border-left: 1px solid var(--bs-border-color);
+}
+
+.site-menu-link {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 0;
+  border-radius: 0.6rem;
+  background: transparent;
+  color: var(--bs-body-color);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: left;
+  text-decoration: none;
+}
+
+.site-menu-link:hover {
+  background: var(--bs-tertiary-bg);
+  color: var(--bs-body-color);
+}
+
+.site-menu-link:focus-visible {
+  outline: 3px solid var(--edu-accent);
+  outline-offset: -2px;
+}
+
+.site-menu-link > i:first-child {
+  width: 1.2rem;
+  text-align: center;
+  font-size: 1.05rem;
+  color: var(--bs-secondary-color);
+}
+
+.site-menu-link.is-active {
+  background: rgba(79, 70, 229, 0.12);
+  color: var(--edu-primary);
+  font-weight: 600;
+}
+
+.site-menu-link.is-active > i:first-child {
+  color: var(--edu-primary);
+}
+
+.site-menu-link.is-danger {
+  color: #dc2626;
+}
+
+.site-menu-toggle .chevron {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--bs-secondary-color);
+  transition: transform 0.2s ease;
+}
+
+.site-menu-toggle[aria-expanded="true"] {
+  background: var(--bs-tertiary-bg);
+}
+
+.site-menu-toggle[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+
+/* ---------- Shared page elements ---------- */
+
+.app-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content > main,
+main.page-main {
+  flex: 1 0 auto;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--edu-primary);
+}
+
+[data-bs-theme="dark"] .eyebrow {
+  color: #a5b4fc;
+}
+
+.hero {
+  background:
+    radial-gradient(1000px 420px at 0% -10%, rgba(79, 70, 229, 0.12), transparent 60%),
+    radial-gradient(800px 380px at 100% 0%, rgba(6, 182, 212, 0.12), transparent 60%);
+}
+
+.feature-icon {
+  flex: 0 0 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background: rgba(79, 70, 229, 0.12);
+  color: var(--edu-primary);
+  font-size: 1.2rem;
+}
+
+[data-bs-theme="dark"] .feature-icon {
+  color: #a5b4fc;
+}
+
+.lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.75rem 2rem rgba(15, 23, 42, 0.12) !important;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--edu-primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+.app-footer {
+  border-top: 1px solid var(--bs-border-color);
+  color: var(--bs-secondary-color);
+  background: var(--bs-body-bg);
+}
+
+.footer-link {
+  color: var(--bs-secondary-color);
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: var(--edu-primary);
+  text-decoration: underline;
+}
+
+/* ---------- Workspace: dashboard ---------- */
+
+.stat-card {
+  border: none;
+  border-radius: 1rem;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.chart-wrap {
+  position: relative;
+  height: 300px;
+}
+
+.progress {
+  height: 1.1rem;
+  border-radius: 0.5rem;
+}
+
+.progress-bar {
+  font-size: 0.72rem;
+  background-color: var(--edu-primary);
+}
+
+/* ---------- Workspace: tasks ---------- */
+
+.task-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.75rem 1.5rem rgba(15, 23, 42, 0.15) !important;
+}
+
+/* ---------- Workspace: chat ---------- */
+
+.chat-thread {
+  height: 420px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.chat-day {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--bs-secondary-color);
+  margin: 0.5rem 0;
+}
+
+.chat-day span {
+  background: var(--bs-tertiary-bg);
+  padding: 0.15rem 0.7rem;
+  border-radius: 1rem;
+}
+
+.chat-row {
+  display: flex;
+}
+
+.chat-row.mine {
+  justify-content: flex-end;
+}
+
+.chat-bubble {
+  max-width: 78%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 1rem;
+}
+
+.chat-row.mine .chat-bubble {
+  border-bottom-right-radius: 0.25rem;
+}
+
+.chat-row.theirs .chat-bubble {
+  border-bottom-left-radius: 0.25rem;
+}
+
+.chat-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.chat-time {
+  font-size: 0.7rem;
+  opacity: 0.75;
+  text-align: right;
+}
+
+/* ---------- Sign-in page ---------- */
+
+.auth-body {
+  background: linear-gradient(135deg, #eef2ff 0%, #e0f7fa 100%);
+}
+
+[data-bs-theme="dark"] .auth-body {
+  background: linear-gradient(135deg, #1e1b4b 0%, #0c4a6e 100%);
+}
+
+.auth-card {
+  max-width: 460px;
+  margin: 0 auto;
+  border: none;
+  border-radius: 1rem;
+}
+
+.brand-title {
+  color: var(--edu-primary);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+[data-bs-theme="dark"] .brand-title {
+  color: #a5b4fc;
+}
+
+.demo-hint {
+  background: #eef2ff;
+  color: var(--edu-primary-dark);
+}
+
+[data-bs-theme="dark"] .demo-hint {
+  background: rgba(79, 70, 229, 0.2);
+  color: #c7d2fe;
+}
+
+/* ---------- Responsive and accessibility ---------- */
+
+@media (max-width: 575.98px) {
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .auth-card .card-body {
+    padding: 1.5rem !important;
+  }
+
+  .chat-bubble {
+    max-width: 90%;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid var(--edu-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   Course navigation bar
+   ========================================================================== */
+.course-pill {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 0.4rem 0.9rem;
+  border-radius: 2rem;
+  border: 1px solid var(--bs-border-color);
+  background: transparent;
+  color: var(--bs-body-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.course-pill:hover {
+  background: var(--bs-tertiary-bg);
+}
+
+.course-pill.active {
+  background: var(--edu-primary);
+  border-color: var(--edu-primary);
+  color: #fff;
+}
+
+.course-pill .count {
+  margin-left: 0.4rem;
+  font-size: 0.75rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 1rem;
+  background: var(--bs-tertiary-bg);
+  color: var(--bs-body-color);
+}
+
+.course-pill.active .count {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+.course-pills {
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.course-search {
+  min-width: 260px;
+}
+
+/* ==========================================================================
+   Profile page
+   ========================================================================== */
+.avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--edu-primary);
+  color: #fff;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.profile-details dt {
+  color: var(--bs-secondary-color);
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+.profile-details dd {
+  margin-bottom: 0;
+}
+
+.profile-details dt:first-child {
+  margin-top: 0;
+}
+
+.page-header h1 {
+  font-weight: 700;
+}
+
+
+/* ==========================================================================
+   Top bar links (Home, Courses, Tasks, Profile)
+   ========================================================================== */
+.top-link {
+  color: #cbd5e1;
+  padding: 0.45rem 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.top-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.top-link.is-active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  font-weight: 600;
+}
+
+.top-link:focus-visible {
+  outline: 3px solid var(--edu-accent);
+  outline-offset: 2px;
+}
+
+.course-picker {
+  min-width: 240px;
+}
+
+/* Top bar dropdown menus (Courses, Tasks) */
+button.top-link {
+  background: transparent;
+  border: 0;
+}
+
+.top-dropdown {
+  min-width: 17rem;
+  padding: 0.4rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.75rem 2rem rgba(15, 23, 42, 0.25);
+}
+
+.top-dropdown .dropdown-item {
+  border-radius: 0.5rem;
+  font-size: 0.92rem;
+}
+
+/* ==========================================================================
+   Mobile friendly: phones and small tablets
+   Everything the laptop can do works on a phone. Touch targets are at least
+   about 44px, form fields are 16px so iPhones do not zoom in, the course table
+   turns into a card per course, and the Ask Ed button does not hide content.
+   ========================================================================== */
+
+@media (max-width: 767.98px) {
+  .btn { min-height: 44px; }
+  .btn-sm { min-height: 40px; padding: 0.4rem 0.75rem; font-size: 0.92rem; }
+  .form-control,
+  .form-select { min-height: 44px; font-size: 16px; }
+  .btn-close { width: 44px; height: 44px; }
+  .btn-theme { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  .hamburger { width: 46px; height: 46px; }
+  .site-menu-link { min-height: 46px; }
+  .top-link { min-height: 44px; display: inline-flex; align-items: center; }
+  .course-pill { min-height: 42px; }
+  .list-group-item { min-height: 44px; }
+  .chat-bubble { max-width: 92%; }
+
+  /* Leave room above the floating Ask Ed button so it never hides a button */
+  main { padding-bottom: 5.5rem !important; }
+  .ed-fab { width: 54px; height: 54px; right: 1rem; bottom: 1rem; }
+  .ed-panel { right: 0.75rem; left: 0.75rem; width: auto; bottom: 5.5rem; height: min(540px, calc(100vh - 7rem)); }
+
+  /* Course table becomes one stacked card per course */
+  section[aria-label="Course list"] thead { display: none; }
+  section[aria-label="Course list"] table,
+  section[aria-label="Course list"] tbody { display: block; width: 100%; }
+  section[aria-label="Course list"] tbody tr {
+    display: block;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--bs-border-color);
+  }
+  section[aria-label="Course list"] tbody tr:last-child { border-bottom: 0; }
+  section[aria-label="Course list"] tbody td {
+    display: block !important;
+    border: 0;
+    padding: 0.25rem 0;
+    text-align: left !important;
+    white-space: normal;
+  }
+  section[aria-label="Course list"] tbody td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--bs-secondary-color);
+  }
+  section[aria-label="Course list"] tbody td[data-label="Code"] { font-size: 1.05rem; }
+  section[aria-label="Course list"] tbody td[data-label="Actions"] {
+    display: flex !important;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+  }
+  section[aria-label="Course list"] tbody td[data-label="Actions"] .btn { flex: 1 1 0; }
+  section[aria-label="Course list"] tbody td[data-label="Actions"]::before { display: none; }
+  section[aria-label="Course list"] .table-responsive { overflow: visible; }
+}
+
+/* Tasks filters: a tidy 2 by 2 grid on phones instead of a wrapped row */
+@media (max-width: 575.98px) {
+  .btn-group.flex-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  .btn-group.flex-wrap > .btn {
+    border-radius: 0.6rem !important;
+    margin: 0 !important;
+  }
+  .course-subnav .card-body { padding: 1rem; }
+}
+
+/* Study Chat on phones: channels become a scrollable row so messages show first */
+@media (max-width: 991.98px) {
+  #channel-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+  #channel-list .list-group-item {
+    flex: 0 0 auto;
+    width: 180px;
+    border-width: 0 1px 0 0;
+  }
+  #channel-list .list-group-item small {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
